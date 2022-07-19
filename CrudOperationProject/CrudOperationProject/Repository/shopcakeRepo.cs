@@ -17,13 +17,12 @@ namespace CrudOperationProject.Repository
             _Configuration = configuration;
         }
 
-        public List<ShopCake>GetCakes(string CName)
+        public List<ShopCake>GetCakes()
         {
 
             try
             {
-                if (string.IsNullOrEmpty(CName))
-                    CName = string.Empty;
+               
 
                 var cakesList = new List<ShopCake>();
 
@@ -32,7 +31,6 @@ namespace CrudOperationProject.Repository
                 var cmd = new MySqlCommand("CakeGet_SP", con);
                 con.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("_Name", CName);
                 var reader = cmd.ExecuteReader();
 
                 while (reader.Read())

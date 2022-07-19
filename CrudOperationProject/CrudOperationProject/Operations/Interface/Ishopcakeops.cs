@@ -7,7 +7,7 @@ namespace CrudOperationProject.Operations.Interface
     public interface Ishopcakeops
     {
 
-        public List<ShopCake> GetCakes(string CName);
+        public List<ShopCake> GetCakes();
         public ShopCake GetCakesById(int Id);
         public int SaveCakes(ShopCake shopcake);
         public int Updatecakes(ShopCake shopcake);

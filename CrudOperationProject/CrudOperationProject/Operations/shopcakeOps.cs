@@ -22,9 +22,9 @@ namespace CrudOperationProject.Operations
             this._csvHelper = csvHelper;
         }
 
-        public List<ShopCake> GetCakes(string CName)
+        public List<ShopCake> GetCakes()
         {
-            return _shopcakeRepo.GetCakes(CName);
+            return _shopcakeRepo.GetCakes();
         }
 
       /*  public byte[] Exportcakes(int id, string name)

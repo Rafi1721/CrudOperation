@@ -26,9 +26,9 @@ namespace CrudOperationProject.Controllers
 
         [HttpGet("")]
 
-        public IActionResult GetCakes([FromQuery] string CName)
+        public IActionResult GetCakes()
         {
-            var response = _shopcakeOps.GetCakes(CName);
+            var response = _shopcakeOps.GetCakes();
             return responseHelper.CreateResponse(response);
 
 
