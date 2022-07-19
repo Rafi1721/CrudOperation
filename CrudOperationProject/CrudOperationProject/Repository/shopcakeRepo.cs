@@ -22,10 +22,7 @@ namespace CrudOperationProject.Repository
 
             try
             {
-               
-
                 var cakesList = new List<ShopCake>();
-
                 var conStr = this._Configuration.GetConnectionString("Default");
                 var con = new MySqlConnection(conStr);
                 var cmd = new MySqlCommand("CakeGet_SP", con);
@@ -35,12 +32,9 @@ namespace CrudOperationProject.Repository
 
                 while (reader.Read())
                 {
-                    var cakes = new ShopCake();
+                    ShopCake cakes = new ShopCake();
                     cakes.Id = Convert.ToInt32(reader["Id"]);
                     cakes.Name = reader["Name"].ToString();
-
-
-
                     cakesList.Add(cakes);
                 }
                 con.Close();
@@ -60,25 +54,19 @@ namespace CrudOperationProject.Repository
 
             try
             {
-                ShopCake shopcake = null;
-
                 var conStr = this._Configuration.GetConnectionString("Default");
                 var con = new MySqlConnection(conStr);
                 var cmd = new MySqlCommand("CakeGetById_SP", con);
                 con.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("_cakeId", Id);
-                
-
                 var reader = cmd.ExecuteReader();
-
+                ShopCake shopcake = new ShopCake();
                 if (reader.Read())
                 {
                     shopcake = new ShopCake();
                     shopcake.Id = Convert.ToInt32(reader["Id"]);
                     shopcake.Name = reader["Name"].ToString();
-
-
                 }
                 con.Close();
                 return shopcake;
@@ -88,10 +76,8 @@ namespace CrudOperationProject.Repository
                 logger.LogError(e.Message);
                 return null;
             }
-
         }
 
-        
 
         public int SaveCakes(ShopCake ShopCake)
         {
